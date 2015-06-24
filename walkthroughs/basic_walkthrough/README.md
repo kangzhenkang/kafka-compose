@@ -1,5 +1,5 @@
 # Basic Kafka Walkthrough
-
+**WALKTHROUGH NOT FINISHED**  
 This walkthrough deals with getting a complete kafka newbie familiar with some of the concepts around kafka.  
 One thing to note this walkthrough is mainly targetted at Osx users, linux users can also follow this walkthrough but will need to substitute ``$(boot2docker ip)`` with ``localhost`` in all the commands.  
 
@@ -42,7 +42,7 @@ We are going to use Kafka's own java console producer to send the messages to ka
 This meta-data contains information about the all the topic partitions, but most importantly which broker is the leader for each partition at this moment in time.  
 The producer by default will hash any provided message keys, calculate the modulus (using the number of partition) to determine which partiton to sent the message to, then use the meta-data to know which broker to send the message(s) to.  
 If no message key is provided, it will send the message(s) to a randomly chosen partition and send continously for a certain period.   
-**Please bear in mind, this is how the java producer used by the console tool behaves, not necessarily how other producers behave**  
+*Please bear in mind, this is how the java producer used by the console tool behaves, not necessarily how other producers behave*  
 
 #### 1. **Send Messages (to non-specific partitions)
 Run  
@@ -63,6 +63,27 @@ Now enter the following lines
 ``1 {"name":"Zuko", "skills":["fire-bending"]}``  
 ``1 {"name":"Azula", "skills":["fire-bending"]}``  
 ``1 {"name":"Mako", "skills":["fire-bending"]}``  
+``2 {"name":"Toph Beifong", "skills":["earth-bending"]}``  
+``2 {"name":"Bolin", "skills":["earth-bending"]}``  
+``3 {"name":"Katara", "skills":["water-bending"]}``  
+``3 {"name":"Kya", "skills":["water-bending"]}``  
 
-Hit Control-C to stop sending messages.
+Hit Control-C to stop sending messages.  
+What should have happened is that the entries with the same key (number) will have ended up in the same partitions, in the order that they were entered.  
+Thus all the fire,water and earth benders should end up on their own partitions.   
+*Don't be suprised if you see Ang and Korra on any of the partitions as they were sent without any keys and can appear any where, again bear in mind this is the default behaviour of the java kafka producer*   
 
+
+## Consuming messages
+As you've probably guessed by now, we can consume messages from all a Topic's partitions or from a specific partition.  
+To consume all the messages that have been sent to all the partitions of the bender topic run   
+``./kafka-console-consumer --zookeeper $(boot2docker ip):2181 --topic benders --from-beginning``
+
+To consume all the messages that have been sent to partition 0 of the bender topic run   
+``./kafka-run-class kafka.tools.SimpleConsumerShell --broker-list "localhost:9092" --topic test --partition 0 --offset -2``  
+
+To consume all the messages that have been sent to partition 1 of the bender topic run   
+``./kafka-run-class kafka.tools.SimpleConsumerShell --broker-list "localhost:9092" --topic test --partition 1 --offset -2``  
+
+To consume all the messages that have been sent to partition 2 of the bender topic run   
+``./kafka-run-class kafka.tools.SimpleConsumerShell --broker-list "localhost:9092" --topic test --partition 2 --offset -2``  
