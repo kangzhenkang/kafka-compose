@@ -78,12 +78,12 @@ To find out the actual ips of all containers run
   Osx - ``./kafka-console-consumer --zookeeper $(boot2docker ip):2181 --topic test --from-beginning``   
 
 - **To consume A message from A particular topic and A particular partition from the begining**   
-  Linux - ``./kafka-run-class kafka.tools.SimpleConsumerShell --broker-list "localhost:9092" --max-messages 1 --topic test --partition 1 --offset -2``  
-  Osx - ``./kafka-run-class kafka.tools.SimpleConsumerShell --broker-list "$(boot2docker ip):9092" --max-messages 1 --topic test --partition 1 --offset -2``  
+  Linux - ``./kafka-run-class kafka.tools.SimpleConsumerShell --broker-list "localhost:9092" --max-messages 1 --topic test --partition 0 --offset -2``  
+  Osx - ``./kafka-run-class kafka.tools.SimpleConsumerShell --broker-list "$(boot2docker ip):9092" --max-messages 1 --topic test --partition 0 --offset -2``  
 
 - **To consume A message from A particular topic and A particular partition from the latest**   
-  Linux - ``./kafka-run-class kafka.tools.SimpleConsumerShell --broker-list "localhost:9092" --max-messages 1 --topic test --partition 1 --offset -1``  
-  Osx - ``./kafka-run-class kafka.tools.SimpleConsumerShell --broker-list "$(boot2docker ip):9092" --max-messages 1 --topic test --partition 1 --offset -1``  
+  Linux - ``./kafka-run-class kafka.tools.SimpleConsumerShell --broker-list "localhost:9092" --max-messages 1 --topic test --partition 0 --offset -1``  
+  Osx - ``./kafka-run-class kafka.tools.SimpleConsumerShell --broker-list "$(boot2docker ip):9092" --max-messages 1 --topic test --partition 0 --offset -1``  
 
 
 ##  Notes
