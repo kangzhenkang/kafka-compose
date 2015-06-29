@@ -4,7 +4,7 @@ One thing to note is, this walkthrough is mainly targetted at Osx users, linux u
 
 
 ##  Pre-requisite
-The reader should have followed the instructions outlayed in the [main readme](../../) and should have a full 3 node kafka cluster up and running
+The reader should have followed the instructions outlayed in the [main readme](../../README.md) and should have a full 3 node kafka cluster up and running
 
 ## Topics
 A kafka topic is made up of partitions, with each partition containing a sequence of messages that are sent to it.  
