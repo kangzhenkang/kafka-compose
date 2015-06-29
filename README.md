@@ -18,7 +18,7 @@ This repository gives you the ability to create a local kafka cluster for develo
 These walkthroughs are aimed at getting you familiar with kafka.    
 They are written with the aim of getting different groups (devs, admins) comfortable using kafka.   
 
-1) [**Basic Walkthrough**](./basic_walkthrough) - Aimed at everyone and *everyone* should go through this.   
+1) [**Basic Walkthrough**](./walkthroughs/basic_walkthrough/README.md) - Aimed at everyone and *everyone* should go through this.   
 2) **Ruby Walkthrough** - TODO   
 3) **Clojure Walkthrough** - TODO    
 

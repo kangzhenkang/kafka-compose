@@ -1,10 +1,10 @@
 # Basic Kafka Walkthrough
 This walkthrough deals with getting a complete kafka newbie familiar with some of the concepts around kafka.  
-One thing to note this walkthrough is mainly targetted at Osx users, linux users can also follow this walkthrough but will need to substitute ``$(boot2docker ip)`` with ``localhost`` in all the commands.  
+One thing to note is, this walkthrough is mainly targetted at Osx users, linux users can also follow this walkthrough but will need to substitute ``$(boot2docker ip)`` with ``localhost`` in all the commands.  
 
 
 ##  Pre-requisite
-The reader should have followed the instructions outlayed in the [main readme](../../README.md) and should have a full 3 node kafka cluster up and running
+The reader should have followed the instructions outlayed in the [main readme](../../) and should have a full 3 node kafka cluster up and running
 
 ## Topics
 A kafka topic is made up of partitions, with each partition containing a sequence of messages that are sent to it.  
