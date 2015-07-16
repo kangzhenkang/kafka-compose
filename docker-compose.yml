@@ -11,7 +11,7 @@ zookeeper:
 
 
 kafka1:
-  image: samsara/kafka 
+  image: samsara/kafka
   ports:
     - "9092:9092"
     - "15002:15000"
@@ -25,28 +25,30 @@ kafka1:
 
 
 kafka2:
-  image: samsara/kafka 
+  image: samsara/kafka
   ports:
-    - "9093:9092"
+    - "9093:9093"
     - "15003:15000"
   links:
     - zookeeper:zookeeper
   environment:
     KAFKA_BROKER_ID: 2
+    KAFKA_BROKER_BROKER: 9093
   volumes:
     - /tmp/docker/kafka2/logs:/logs
     - /tmp/docker/kafka2/data:/data
 
 
 kafka3:
-  image: samsara/kafka 
+  image: samsara/kafka
   ports:
-    - "9094:9092"
+    - "9094:9094"
     - "15004:15000"
   links:
     - zookeeper:zookeeper
   environment:
     KAFKA_BROKER_ID: 3
+    KAFKA_BROKER_PORT: 9094
   volumes:
     - /tmp/docker/kafka3/logs:/logs
     - /tmp/docker/kafka3/data:/data
