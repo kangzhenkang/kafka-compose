@@ -1,0 +1,100 @@
+zookeeper:
+  image: samsara/zookeeper
+  ports:
+    - "2181:2181"
+    - "15001:15000"
+  environment:
+    ZK_SERVER_ID: 1
+  volumes:
+    - /tmp/docker/zk1/logs:/logs
+    - /tmp/docker/zk1/data:/data
+
+
+kafka1:
+  image: samsara/kafka
+  ports:
+    - "9092:9092"
+    - "15002:15000"
+  links:
+    - zookeeper:zookeeper
+  environment:
+    KAFKA_BROKER_ID: 1
+  volumes:
+    - /tmp/docker/kafka1/logs:/logs
+    - /tmp/docker/kafka1/data:/data
+
+
+kafka2:
+  image: samsara/kafka
+  ports:
+    - "9093:9093"
+    - "15003:15000"
+  links:
+    - zookeeper:zookeeper
+  environment:
+    KAFKA_BROKER_ID: 2
+    KAFKA_BROKER_BROKER: 9093
+  volumes:
+    - /tmp/docker/kafka2/logs:/logs
+    - /tmp/docker/kafka2/data:/data
+
+
+kafka3:
+  image: samsara/kafka
+  ports:
+    - "9094:9094"
+    - "15004:15000"
+  links:
+    - zookeeper:zookeeper
+  environment:
+    KAFKA_BROKER_ID: 3
+    KAFKA_BROKER_PORT: 9094
+  volumes:
+    - /tmp/docker/kafka3/logs:/logs
+    - /tmp/docker/kafka3/data:/data
+
+######## NEW BROKERS #########
+# kafka4:
+#   image: samsara/kafka
+#   ports:
+#     - "9095:9095"
+#     - "15005:15000"
+#   links:
+#     - zookeeper:zookeeper
+#   environment:
+#     KAFKA_BROKER_ID: 4
+#     KAFKA_BROKER_PORT: 9095
+#   volumes:
+#     - /tmp/docker/kafka4/logs:/logs
+#     - /tmp/docker/kafka4/data:/data
+# 
+# 
+# kafka5:
+#   image: samsara/kafka
+#   ports:
+#     - "9096:9096"
+#     - "15006:15000"
+#   links:
+#     - zookeeper:zookeeper
+#   environment:
+#     KAFKA_BROKER_ID: 5
+#     KAFKA_BROKER_PORT: 9096
+#   volumes:
+#     - /tmp/docker/kafka5/logs:/logs
+#     - /tmp/docker/kafka5/data:/data
+# 
+# 
+# kafka6:
+#   image: samsara/kafka
+#   ports:
+#     - "9097:9097"
+#     - "15007:15000"
+#   links:
+#     - zookeeper:zookeeper
+#   environment:
+#     KAFKA_BROKER_ID: 6
+#     KAFKA_BROKER_PORT: 9097
+#   volumes:
+#     - /tmp/docker/kafka6/logs:/logs
+#     - /tmp/docker/kafka6/data:/data
+# 
