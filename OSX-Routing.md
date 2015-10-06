@@ -16,7 +16,7 @@ You should see a bunch of image names and ips like
 
 3) Check for any existing routing rules by running ``netstat -rn | grep 172.17``   
 4) If a rule exists, just make sure you can reach the container ips and any ports.   
-5) If a rule doesn't exist, create one by running ``sudo route -n add 172.17.0.0/24 $(boot2docker ip)``. Then check you can reach the container ips and ports  
+5) If a rule doesn't exist, create one by running ``sudo route -n add 172.17.0.0/24 $(boot2docker ip)``. Then check you can reach the container ips and ports; if you are running docker machine then you may wish to run ``sudo route -n add 172.17.0.0/24 $(docker-machine ip default)``
 
 To remove a routing rule run ``sudo route -n delete 172.17.0.0/24 $(boot2docker ip)``   
 The above routing rule is temporary, so it will need to be re-created if the system is restarted.  
