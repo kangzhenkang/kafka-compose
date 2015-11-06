@@ -24,7 +24,6 @@ kafka1:
     - /tmp/docker/kafka1/logs:/logs
     - /tmp/docker/kafka1/data:/data
 
-
 kafka2:
   image: samsara/kafka
   container_name: kafka2
@@ -39,7 +38,6 @@ kafka2:
   volumes:
     - /tmp/docker/kafka2/logs:/logs
     - /tmp/docker/kafka2/data:/data
-
 
 kafka3:
   image: samsara/kafka
@@ -57,12 +55,17 @@ kafka3:
     - /tmp/docker/kafka3/data:/data
 
 schemaregistry:
-  image: confluent/schema-registry
+  build: schema-registry
   container_name: schemaregistry
+  environment:
+    SCHEMA_REGISTRY_DEBUG: true
   ports:
     - "8081:8081"
   links:
     - zookeeper
+    - kafka1
+    - kafka2
+    - kafka3
 
 kafkarestproxy:
   build: kafka-rest-proxy
