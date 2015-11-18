@@ -58,7 +58,7 @@ schemaregistry:
   build: schema-registry
   container_name: schemaregistry
   environment:
-    SCHEMA_REGISTRY_DEBUG: true
+    SCHEMA_REGISTRY_DEBUG: "true"
   ports:
     - "8081:8081"
   links:
