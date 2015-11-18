@@ -1,9 +1,9 @@
 zookeeper:
   image: samsara/zookeeper
   container_name: zookeeper
-  ports:
-    - "2181:2181"
-    - "15001:15000"
+  expose:
+    - "2181"
+    - "15001"
   environment:
     ZK_SERVER_ID: 1
   volumes:
@@ -13,9 +13,9 @@ zookeeper:
 kafka1:
   image: samsara/kafka
   container_name: kafka1
-  ports:
-    - "9092:9092"
-    - "15002:15000"
+  expose:
+    - "9092"
+    - "15002"
   links:
     - zookeeper
   environment:
@@ -27,9 +27,9 @@ kafka1:
 kafka2:
   image: samsara/kafka
   container_name: kafka2
-  ports:
-    - "9093:9093"
-    - "15003:15000"
+  expose:
+    - "9093"
+    - "15003"
   links:
     - zookeeper
   environment:
@@ -42,9 +42,9 @@ kafka2:
 kafka3:
   image: samsara/kafka
   container_name: kafka3
-  ports:
-    - "9094:9094"
-    - "15004:15000"
+  expose:
+    - "9094"
+    - "15004"
   links:
     - zookeeper
   environment:
@@ -59,8 +59,8 @@ schemaregistry:
   container_name: schemaregistry
   environment:
     SCHEMA_REGISTRY_DEBUG: "true"
-  ports:
-    - "8081:8081"
+  expose:
+    - "8081"
   links:
     - zookeeper
     - kafka1
@@ -70,8 +70,8 @@ schemaregistry:
 kafkarestproxy:
   build: kafka-rest-proxy
   container_name: kafkarestproxy
-  ports:
-    - "8082:8082"
+  expose:
+    - "8082"
   links:
     - zookeeper
     - schemaregistry
