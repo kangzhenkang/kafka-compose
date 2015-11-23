@@ -6,9 +6,6 @@ zookeeper:
     - "15001"
   environment:
     ZK_SERVER_ID: 1
-  volumes:
-    - /tmp/docker/zk1/logs:/logs
-    - /tmp/docker/zk1/data:/data
 
 kafka1:
   image: samsara/kafka
@@ -20,9 +17,6 @@ kafka1:
     - zookeeper
   environment:
     KAFKA_BROKER_ID: 1
-  volumes:
-    - /tmp/docker/kafka1/logs:/logs
-    - /tmp/docker/kafka1/data:/data
 
 kafka2:
   image: samsara/kafka
@@ -35,9 +29,6 @@ kafka2:
   environment:
     KAFKA_BROKER_ID: 2
     KAFKA_BROKER_PORT: 9093
-  volumes:
-    - /tmp/docker/kafka2/logs:/logs
-    - /tmp/docker/kafka2/data:/data
 
 kafka3:
   image: samsara/kafka
@@ -50,9 +41,6 @@ kafka3:
   environment:
     KAFKA_BROKER_ID: 3
     KAFKA_BROKER_PORT: 9094
-  volumes:
-    - /tmp/docker/kafka3/logs:/logs
-    - /tmp/docker/kafka3/data:/data
 
 schemaregistry:
   build: schema-registry
