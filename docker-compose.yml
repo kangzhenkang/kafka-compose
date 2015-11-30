@@ -1,5 +1,6 @@
 zookeeper:
   image: samsara/zookeeper
+  container_name: zookeeper
   ports:
     - "2181:2181"
     - "15001:15000"
@@ -9,43 +10,43 @@ zookeeper:
     - /tmp/docker/zk1/logs:/logs
     - /tmp/docker/zk1/data:/data
 
-
 kafka1:
   image: samsara/kafka
+  container_name: kafka1
   ports:
     - "9092:9092"
     - "15002:15000"
   links:
-    - zookeeper:zookeeper
+    - zookeeper
   environment:
     KAFKA_BROKER_ID: 1
   volumes:
     - /tmp/docker/kafka1/logs:/logs
     - /tmp/docker/kafka1/data:/data
 
-
 kafka2:
   image: samsara/kafka
+  container_name: kafka2
   ports:
     - "9093:9093"
     - "15003:15000"
   links:
-    - zookeeper:zookeeper
+    - zookeeper
   environment:
     KAFKA_BROKER_ID: 2
-    KAFKA_BROKER_BROKER: 9093
+    KAFKA_BROKER_PORT: 9093
   volumes:
     - /tmp/docker/kafka2/logs:/logs
     - /tmp/docker/kafka2/data:/data
 
-
 kafka3:
   image: samsara/kafka
+  container_name: kafka3
   ports:
     - "9094:9094"
     - "15004:15000"
   links:
-    - zookeeper:zookeeper
+    - zookeeper
   environment:
     KAFKA_BROKER_ID: 3
     KAFKA_BROKER_PORT: 9094
@@ -53,18 +54,25 @@ kafka3:
     - /tmp/docker/kafka3/logs:/logs
     - /tmp/docker/kafka3/data:/data
 
-
 schemaregistry:
-  image: confluent/schema-registry
+  build: schema-registry
+  container_name: schemaregistry
+  environment:
+    SCHEMA_REGISTRY_DEBUG: "true"
   ports:
     - "8081:8081"
   links:
-    - zookeeper:zookeeper
+    - zookeeper
+    - kafka1
+    - kafka2
+    - kafka3
 
 kafkarestproxy:
   build: kafka-rest-proxy
+  container_name: kafkarestproxy
   ports:
     - "8082:8082"
   links:
-    - zookeeper:zookeeper
-    - schemaregistry:schemaregistry
+    - zookeeper
+    - schemaregistry
+
