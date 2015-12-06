@@ -74,10 +74,11 @@ You can control the running "composed" containers as follows:
 ##  Notes
 
 0. Currently the Zookeeper and Kafka containers use volumes that are on the
-   local filesystem for Linux, but for OS X are inside the `boot2docker` vm
-   (type `boot2docker ssh` and explore `/tmp/docker`). These volumes will
-   survive container restarts and should be deleted (and recreated for Linux
-   users) if you want your containers to start with clean volumes.
+   local filesystem for Linux, but for OS X are inside the Docker Machine VM
+   (type `docker-machine ls` to find your machine, then `docker-machine ssh
+   <machine>` and explore `/tmp/docker`). These volumes will survive container
+   restarts and should be deleted (and recreated for Linux users) if you want
+   your containers to start with clean volumes.
 0. If you need to repoint the `docker-compose.yml` soft link, please shutdown
    and remove the current configuration first by running:
 
