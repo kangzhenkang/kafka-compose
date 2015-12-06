@@ -38,7 +38,7 @@ NB: You will need to have [Homebrew][homebrew] installed.
    to directories internally used by the containers. Set up all associated local
    volumes/directories by running this command:
 
-    mkdir -p `grep /tmp/docker docker-compose.yml | cut -d' ' -f6 | cut -d':' -f1 | sort`
+    mkdir -p `grep /tmp/docker docker-compose.yml | awk '{split($2, array, ":")}; {print array[1]}'`
 
 ### General
 
