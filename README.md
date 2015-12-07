@@ -15,7 +15,7 @@ for local development and experimentation.
 
 NB: You will need to have [Homebrew][homebrew] installed.
 
-0. Install [Docker Machine][docker-machine]
+0. Install [Docker Toolbox][docker-toolbox]
 
     brew install docker-machine
 
