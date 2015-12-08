@@ -18,19 +18,19 @@ This repository gives you the ability to create a local kafka cluster for develo
 These walkthroughs are aimed at getting you familiar with kafka.    
 They are written with the aim of getting different groups (devs, admins) comfortable using kafka.   
 
-1) [**Basic Walkthrough**](./walkthroughs/basic_walkthrough/README.md) - Aimed at everyone and *everyone* should go through this.   
-2) **Ruby Walkthrough** - TODO   
-3) **Clojure Walkthrough** - TODO    
+0. [**Basic Walkthrough**](./walkthroughs/basic_walkthrough/README.md) - Aimed at everyone and *everyone* should go through this.
+0. **Ruby Walkthrough** - TODO
+0. **Clojure Walkthrough** - TODO
 
 ##  Stopping
 To stop all the containers running ``docker-compose stop``   
 To remove all the containers ``docker-compose rm``  
 
 ##  Notes
-1. Currently the zookeeper and kafka containers use volumes that are on the local filesystem for Linux, but for Macs are inside the boot2docker vm (type `boot2docker ssh` and explore /tmp/docker). These volumes will survive container restarts and should be deleted (and recreated for linux users) if you want your containers to start with clean volumes.
-2. If you need to repoint the docker-compose.yml soft link, please shutdown and remove the current configuration first ``docker-compose stop && docker-compose rm``
+0. Currently the zookeeper and kafka containers use volumes that are on the local filesystem for Linux, but for Macs are inside the boot2docker vm (type `boot2docker ssh` and explore /tmp/docker). These volumes will survive container restarts and should be deleted (and recreated for linux users) if you want your containers to start with clean volumes.
+0. If you need to repoint the docker-compose.yml soft link, please shutdown and remove the current configuration first ``docker-compose stop && docker-compose rm``
 
 ##  TODO
-1. Add a monitoring docker (Already have the perfect candidate)
-2. Expose/link the configuration directories of zookeeper and kafka containers the same way the logs and data directories are exposed. This will allow people to further experiment with various configurations
-3. Explore using a data/volume container instead of volumes linked to local disk.
+0. Add a monitoring docker (Already have the perfect candidate)
+0. Expose/link the configuration directories of zookeeper and kafka containers the same way the logs and data directories are exposed. This will allow people to further experiment with various configurations
+0. Explore using a data/volume container instead of volumes linked to local disk.
