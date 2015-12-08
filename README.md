@@ -31,6 +31,6 @@ To remove all the containers ``docker-compose rm``
 0. If you need to repoint the docker-compose.yml soft link, please shutdown and remove the current configuration first ``docker-compose stop && docker-compose rm``
 
 ##  TODO
-0. Add a monitoring docker (Already have the perfect candidate)
+
 0. Expose/link the configuration directories of zookeeper and kafka containers the same way the logs and data directories are exposed. This will allow people to further experiment with various configurations
 0. Explore using a data/volume container instead of volumes linked to local disk.
