@@ -5,11 +5,12 @@ for local development and experimentation.
 
 ##  Setup
 
+0. Download and install the [Confluent Platform][confluent-platform].
+
 ### Linux
 
 0. Install `docker` via your distribution's package manager.
 0. Download and install [Docker Compose][docker-compose].
-0. Download and install the [Confluent Platform][confluent-platform].
 
 ### OS X
 
@@ -18,14 +19,6 @@ NB: You will need to have [Homebrew][homebrew] installed.
 0. Install [Docker Toolbox][docker-toolbox]
 
     brew install docker-machine
-
-0. Install [Kafka][kafka]
-
-    brew install kafka
-
-0. Install [Zookeeper][zookeeper]
-
-    brew install kafka
 
 0. You will need to carry out this [routing stepup step](./OSX-Routing.md) now
    and every time you reload your routing table or restart the OS.
