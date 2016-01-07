@@ -20,6 +20,7 @@ kafka1:
     - zookeeper
   environment:
     KAFKA_BROKER_ID: 1
+    KAFKA_OFFSETS_STORAGE: kafka
   volumes:
     - /tmp/docker/kafka1/logs:/logs
     - /tmp/docker/kafka1/data:/data
@@ -35,6 +36,7 @@ kafka2:
   environment:
     KAFKA_BROKER_ID: 2
     KAFKA_BROKER_PORT: 9093
+    KAFKA_OFFSETS_STORAGE: kafka
   volumes:
     - /tmp/docker/kafka2/logs:/logs
     - /tmp/docker/kafka2/data:/data
@@ -50,6 +52,7 @@ kafka3:
   environment:
     KAFKA_BROKER_ID: 3
     KAFKA_BROKER_PORT: 9094
+    KAFKA_OFFSETS_STORAGE: kafka
   volumes:
     - /tmp/docker/kafka3/logs:/logs
     - /tmp/docker/kafka3/data:/data
@@ -75,4 +78,3 @@ kafkarestproxy:
   links:
     - zookeeper
     - schemaregistry
-
